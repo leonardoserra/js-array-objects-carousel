@@ -91,7 +91,7 @@ const images = [
     }
 ];
 
-console.log(imagesArray);
+console.log(images);
 for(let i = 0; i < images.length; i++){
     
     let imagesListFiller = `<div class="image-wrapper">
@@ -123,16 +123,47 @@ let currentImage = 0;
 imageGroup[currentImage].classList.add('show');
 thumbnailGroup[currentImage].classList.add('selected');
 overlayGroup[currentImage].classList.add('noOverlay');
-
 const next = document.querySelector('.next');
 const prev = document.querySelector('.prev');
 
-next.addEventListener('click',
-    function(){
+// next.addEventListener('click',
+//     function(){
 
         
         
-        if(currentImage < imageGroup.length - 1){
+//         if(currentImage < imageGroup.length - 1){
+//             imageGroup[currentImage].classList.remove('show');
+//             thumbnailGroup[currentImage].classList.remove('selected');
+//             overlayGroup[currentImage].classList.remove('noOverlay');
+            
+
+//             currentImage++;
+
+//             imageGroup[currentImage].classList.add('show');
+//             thumbnailGroup[currentImage].classList.add('selected')
+//             overlayGroup[currentImage].classList.add('noOverlay');
+
+
+            
+            
+//         }else if(currentImage == imageGroup.length - 1){
+//             imageGroup[currentImage].classList.remove('show');
+//             thumbnailGroup[currentImage].classList.remove('selected')
+//             overlayGroup[currentImage].classList.remove('noOverlay');
+            
+//             currentImage = 0;
+           
+//             imageGroup[currentImage].classList.add('show');
+//             thumbnailGroup[currentImage].classList.add('selected')
+//             overlayGroup[currentImage].classList.add('noOverlay');
+//         }
+        
+//     }
+// )
+
+setInterval(function(){
+
+        
             imageGroup[currentImage].classList.remove('show');
             thumbnailGroup[currentImage].classList.remove('selected');
             overlayGroup[currentImage].classList.remove('noOverlay');
@@ -147,7 +178,7 @@ next.addEventListener('click',
 
             
             
-        }else if(currentImage == imageGroup.length - 1){
+        if(currentImage == imageGroup.length - 1){
             imageGroup[currentImage].classList.remove('show');
             thumbnailGroup[currentImage].classList.remove('selected')
             overlayGroup[currentImage].classList.remove('noOverlay');
@@ -160,7 +191,9 @@ next.addEventListener('click',
         }
         
     }
-)
+
+, 1000);
+
 
 prev.addEventListener('click',
     function(){
@@ -190,4 +223,14 @@ prev.addEventListener('click',
 
     }
 );
+
+
+// thumbnailGroup[currentImage].addEventListener('click', function(){
+//     let prevImage = document.querySelector('.selected');
+//     prevImage.classList.remove('selected')
+//     this[currentImage].forEach(element => {
+//         element.classList.add('selected');
+//     });
+
+// })
 
