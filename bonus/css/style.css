@@ -1,0 +1,120 @@
+/*reset rule*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.container{
+    overflow-y: hidden;
+    margin: 20vh auto;
+    width: 80vw;
+}
+
+.slider{
+    height: 50vh;
+    position: relative;
+}
+
+.image-list{
+    height: 100%;
+}
+
+.image-wrapper{
+    height: 100%;
+    display: none;
+}
+
+.image{
+    object-fit: cover;
+    width: 100%;  
+}
+
+.show{
+    display: block;
+}
+
+.hide{
+    display: none;
+}
+
+.next, .prev{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.331);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.next{
+    top: 10px;
+}
+
+.prev{
+    bottom: 10px;
+}
+
+.next.hide{
+    display: none;
+}
+
+.prev.hide{
+    display: none;
+}
+
+i{
+    cursor: pointer;
+}
+
+.thumbnails-container{
+    display: flex;
+    flex-direction: column-reverse;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 20%;
+    z-index: 10;
+    overflow-y: hidden;
+}
+
+.thumbnail{
+    height: calc(100% / 5);
+    width: 100%;
+    position: relative;
+    overflow-y: hidden;
+    
+}
+
+.overlay{
+    position: absolute;
+    z-index: 20;
+    display: block;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.561);
+}
+
+.overlay.noOverlay{
+    display: none;
+}
+
+
+.miniature{
+    width: 100%;
+    object-fit: cover;
+}
+
+.selected{
+        border: 3px solid white;
+}
