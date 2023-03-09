@@ -34,9 +34,9 @@
     width: 100%;
 }
 
-.img-title,{ 
+.img-title{ 
     color: aliceblue;
-    font-size: large;
+    font-size: 30px;
 }
 
 .img-text{
