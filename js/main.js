@@ -96,9 +96,10 @@ for(let i = 0; i < images.length; i++){
     
     let imagesListFiller = `<div class="image-wrapper">
                                 <img class="image" src="./${images[i].image}" />
-                                <span class="img-title">${images[i].title}</span>
-                                <span class="img-text">${images[i].text}</span>
-                                
+                                <div class="img-description">
+                                    <div class="img-title">${images[i].title}</div>
+                                    <div class="img-text">${images[i].text}</div>
+                                </div>
                             </div>`;
     let thumbnailsContainerFiller = `<div class="thumbnail"><div class="overlay"></div><img class="miniature" src="./img/0${imagesArray[i]}.webp" /></div>`;
 
