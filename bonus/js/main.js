@@ -161,46 +161,15 @@ next.addEventListener('click',
             overlayGroup[currentImage].classList.add('noOverlay');
         }
         
-    }
-);
+    });
+
+    let interval;   
 
     if(currentImage == 0){
-        
-        const interval = setInterval(function(){
-
-            imageGroup[currentImage].classList.remove('show');
-            thumbnailGroup[currentImage].classList.remove('selected');
-            overlayGroup[currentImage].classList.remove('noOverlay');
-            
-
-            currentImage++;
-
-            imageGroup[currentImage].classList.add('show');
-            thumbnailGroup[currentImage].classList.add('selected')
-            overlayGroup[currentImage].classList.add('noOverlay');
-
-
-            
-            
-    
-            
-            if(currentImage == imageGroup.length - 1){
-                clearInterval(interval);
-                setTimeout(function(){
-                imageGroup[currentImage].classList.remove('show');
-                thumbnailGroup[currentImage].classList.remove('selected')
-                overlayGroup[currentImage].classList.remove('noOverlay');
-                
-                currentImage = 0;
-                
-                imageGroup[currentImage].classList.add('show');
-                thumbnailGroup[currentImage].classList.add('selected')
-                overlayGroup[currentImage].classList.add('noOverlay');
-                }, 2000);
-            
-            }   
-            
-        }, 2000);
+        let flag = true;
+        if(flag){
+           interval = setInterval(cicla, 2000);
+        } 
 
     }
 
@@ -246,3 +215,36 @@ prev.addEventListener('click',
 
 // })
 
+
+function cicla(){
+
+    imageGroup[currentImage].classList.remove('show');
+    thumbnailGroup[currentImage].classList.remove('selected');
+    overlayGroup[currentImage].classList.remove('noOverlay');
+    
+
+    currentImage++;
+
+    imageGroup[currentImage].classList.add('show');
+    thumbnailGroup[currentImage].classList.add('selected')
+    overlayGroup[currentImage].classList.add('noOverlay');
+
+    if(currentImage == imageGroup.length - 1){
+        const clear = clearInterval(interval);
+        console.log(clear);
+        setTimeout(function(){
+        imageGroup[currentImage].classList.remove('show');
+        thumbnailGroup[currentImage].classList.remove('selected')
+        overlayGroup[currentImage].classList.remove('noOverlay');
+        
+        currentImage = 0;
+        
+        imageGroup[currentImage].classList.add('show');
+        thumbnailGroup[currentImage].classList.add('selected')
+        overlayGroup[currentImage].classList.add('noOverlay');
+        interval = setInterval(cicla, 2000);
+        }, 2000);
+    
+    }   
+    
+}
