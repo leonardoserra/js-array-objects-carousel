@@ -101,7 +101,10 @@ for(let i = 0; i < images.length; i++){
                                     <div class="img-text">${images[i].text}</div>
                                 </div>
                             </div>`;
-    let thumbnailsContainerFiller = `<div class="thumbnail"><div class="overlay"></div><img class="miniature" src="./img/0${imagesArray[i]}.webp" /></div>`;
+    let thumbnailsContainerFiller = `<div class="thumbnail">
+                                        <div class="overlay"></div>
+                                        <img class="miniature" src="./${images[i].image}" />
+                                    </div>`;
 
     imagesListContent += imagesListFiller;
     thumbnailsContainerContent += thumbnailsContainerFiller;
@@ -126,45 +129,12 @@ overlayGroup[currentImage].classList.add('noOverlay');
 const next = document.querySelector('.next');
 const prev = document.querySelector('.prev');
 
-// next.addEventListener('click',
-//     function(){
+next.addEventListener('click',
+    function(){
 
         
         
-//         if(currentImage < imageGroup.length - 1){
-//             imageGroup[currentImage].classList.remove('show');
-//             thumbnailGroup[currentImage].classList.remove('selected');
-//             overlayGroup[currentImage].classList.remove('noOverlay');
-            
-
-//             currentImage++;
-
-//             imageGroup[currentImage].classList.add('show');
-//             thumbnailGroup[currentImage].classList.add('selected')
-//             overlayGroup[currentImage].classList.add('noOverlay');
-
-
-            
-            
-//         }else if(currentImage == imageGroup.length - 1){
-//             imageGroup[currentImage].classList.remove('show');
-//             thumbnailGroup[currentImage].classList.remove('selected')
-//             overlayGroup[currentImage].classList.remove('noOverlay');
-            
-//             currentImage = 0;
-           
-//             imageGroup[currentImage].classList.add('show');
-//             thumbnailGroup[currentImage].classList.add('selected')
-//             overlayGroup[currentImage].classList.add('noOverlay');
-//         }
-        
-//     }
-// )
-
-setInterval(function(){
-
-         
-    
+        if(currentImage < imageGroup.length - 1){
             imageGroup[currentImage].classList.remove('show');
             thumbnailGroup[currentImage].classList.remove('selected');
             overlayGroup[currentImage].classList.remove('noOverlay');
@@ -179,38 +149,61 @@ setInterval(function(){
 
             
             
-        if(currentImage == imageGroup.length - 1){
+        }else if(currentImage == imageGroup.length - 1){
+            imageGroup[currentImage].classList.remove('show');
+            thumbnailGroup[currentImage].classList.remove('selected')
+            overlayGroup[currentImage].classList.remove('noOverlay');
+            
+            currentImage = 0;
+           
+            imageGroup[currentImage].classList.add('show');
+            thumbnailGroup[currentImage].classList.add('selected')
+            overlayGroup[currentImage].classList.add('noOverlay');
+        }
         
-            
-            imageGroup[imageGroup.length - 1].classList.remove('show');
-            thumbnailGroup[imageGroup.length - 1].classList.remove('selected')
-            overlayGroup[imageGroup.length - 1].classList.remove('noOverlay');
-            
-            
-            imageGroup[imageGroup.length - 1].classList.add('show');
-            thumbnailGroup[imageGroup.length - 1].classList.add('selected')
-            overlayGroup[imageGroup.length - 1].classList.add('noOverlay');
-            
-            setTimeout(function(){
+    }
+);
 
-                imageGroup[imageGroup.length - 1].classList.remove('show');
-                thumbnailGroup[imageGroup.length - 1].classList.remove('selected')
-                overlayGroup[imageGroup.length - 1].classList.remove('noOverlay');
+    if(currentImage == 0){
+        
+        const interval = setInterval(function(){
+
+            imageGroup[currentImage].classList.remove('show');
+            thumbnailGroup[currentImage].classList.remove('selected');
+            overlayGroup[currentImage].classList.remove('noOverlay');
+            
+
+            currentImage++;
+
+            imageGroup[currentImage].classList.add('show');
+            thumbnailGroup[currentImage].classList.add('selected')
+            overlayGroup[currentImage].classList.add('noOverlay');
+
+
+            
+            
+    
+            
+            if(currentImage == imageGroup.length - 1){
+                clearInterval(interval);
+                setTimeout(function(){
+                imageGroup[currentImage].classList.remove('show');
+                thumbnailGroup[currentImage].classList.remove('selected')
+                overlayGroup[currentImage].classList.remove('noOverlay');
                 
                 currentImage = 0;
                 
                 imageGroup[currentImage].classList.add('show');
                 thumbnailGroup[currentImage].classList.add('selected')
                 overlayGroup[currentImage].classList.add('noOverlay');
-                
-            },1000)
+                }, 2000);
             
+            }   
             
-        }
-        
+        }, 2000);
+
     }
 
-, 2000);
 
 
 prev.addEventListener('click',
@@ -233,6 +226,7 @@ prev.addEventListener('click',
             overlayGroup[currentImage].classList.remove('noOverlay');
 
             currentImage = imageGroup.length - 1;
+
             imageGroup[currentImage].classList.add('show');
             thumbnailGroup[currentImage].classList.add('selected')
             overlayGroup[currentImage].classList.add('noOverlay');
