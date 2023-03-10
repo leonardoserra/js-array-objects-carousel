@@ -129,9 +129,18 @@ overlayGroup[currentImage].classList.add('noOverlay');
 const next = document.querySelector('.next');
 const prev = document.querySelector('.prev');
 
+
+//click su immagine che viene messa, da sistmare......
+
 for(let c = 0; c < thumbnailGroup.length; c++){
 
     thumbnailGroup[c].addEventListener('click', function(){
+        imageGroup[c].classList.remove('show');
+        thumbnailGroup[c].classList.remove('selected');
+        overlayGroup[c].classList.remove('noOverlay');
+
+        
+
         imageGroup[c].classList.add('show');
         thumbnailGroup[c].classList.add('selected');
         overlayGroup[c].classList.add('noOverlay');
@@ -139,25 +148,41 @@ for(let c = 0; c < thumbnailGroup.length; c++){
 
 }
 
-next.addEventListener('click',
-    function(){
+next.addEventListener('click',nextSlide);
 
-        imageGroup[currentImage].classList.remove('show');
-        thumbnailGroup[currentImage].classList.remove('selected');
-        overlayGroup[currentImage].classList.remove('noOverlay');
+prev.addEventListener('click',prevSlide);
 
-        if(currentImage < imageGroup.length - 1){
-            currentImage++;
-        }else if(currentImage == imageGroup.length - 1){ 
-            currentImage = 0;
-        }
-        imageGroup[currentImage].classList.add('show');
-            thumbnailGroup[currentImage].classList.add('selected')
-            overlayGroup[currentImage].classList.add('noOverlay');
-    });
 
-prev.addEventListener('click',
-    function(){
+    //bonus2
+
+let interval;   
+
+    //metti ! se vuoi spegnerlo per debuggarlo  
+    let flag = true;
+    if(!flag){
+        interval = setInterval(ciclaSu, 2000);
+    } 
+
+
+//function
+
+function nextSlide(){
+    imageGroup[currentImage].classList.remove('show');
+    thumbnailGroup[currentImage].classList.remove('selected');
+    overlayGroup[currentImage].classList.remove('noOverlay');
+
+    if(currentImage < imageGroup.length - 1){
+        currentImage++;
+    }else if(currentImage == imageGroup.length - 1){ 
+        currentImage = 0;
+    }
+    imageGroup[currentImage].classList.add('show');
+        thumbnailGroup[currentImage].classList.add('selected')
+        overlayGroup[currentImage].classList.add('noOverlay');
+}
+
+function prevSlide(){
+
         imageGroup[currentImage].classList.remove('show');
         thumbnailGroup[currentImage].classList.remove('selected')
         overlayGroup[currentImage].classList.remove('noOverlay');
@@ -171,29 +196,14 @@ prev.addEventListener('click',
         imageGroup[currentImage].classList.add('show');
         thumbnailGroup[currentImage].classList.add('selected')
         overlayGroup[currentImage].classList.add('noOverlay');
-
-    }
-);
-
-
-    //bonus2
-
-let interval;   
-
-
-    let flag = true;
-    if(flag){
-        interval = setInterval(ciclaSu, 2000);
-    } 
-
-
+    
+}
 
 function ciclaSu(){
 
     imageGroup[currentImage].classList.remove('show');
     thumbnailGroup[currentImage].classList.remove('selected');
     overlayGroup[currentImage].classList.remove('noOverlay');
-    
 
     currentImage++;
 
