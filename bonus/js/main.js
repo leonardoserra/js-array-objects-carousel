@@ -178,106 +178,25 @@ function nextSlide(){
         currentImage = 0;
     }
     imageGroup[currentImage].classList.add('show');
-        thumbnailGroup[currentImage].classList.add('selected')
-        overlayGroup[currentImage].classList.add('noOverlay');
+    thumbnailGroup[currentImage].classList.add('selected')
+    overlayGroup[currentImage].classList.add('noOverlay');
 }
 
 function prevSlide(){
 
-        imageGroup[currentImage].classList.remove('show');
-        thumbnailGroup[currentImage].classList.remove('selected')
-        overlayGroup[currentImage].classList.remove('noOverlay');
-
-        if(currentImage > 0){
-            currentImage--;  
-        } else if(currentImage == 0){
-            currentImage = imageGroup.length - 1;
-        }
-
-        imageGroup[currentImage].classList.add('show');
-        thumbnailGroup[currentImage].classList.add('selected')
-        overlayGroup[currentImage].classList.add('noOverlay');
-    
-}
-
-function ciclaSu(){
-
-    imageGroup[currentImage].classList.remove('show');
-    thumbnailGroup[currentImage].classList.remove('selected');
-    overlayGroup[currentImage].classList.remove('noOverlay');
-
-    currentImage++;
-
-    imageGroup[currentImage].classList.add('show');
-    thumbnailGroup[currentImage].classList.add('selected')
-    overlayGroup[currentImage].classList.add('noOverlay');
-
-    if(currentImage == imageGroup.length - 1){
-        clearInterval(interval);
-        setTimeout(function(){
-        imageGroup[currentImage].classList.remove('show');
-        thumbnailGroup[currentImage].classList.remove('selected')
-        overlayGroup[currentImage].classList.remove('noOverlay');
-        
-        currentImage = 0;
-        
-        imageGroup[currentImage].classList.add('show');
-        thumbnailGroup[currentImage].classList.add('selected')
-        overlayGroup[currentImage].classList.add('noOverlay');
-        interval = setInterval(ciclaSu, 2000);
-        }, 2000);
-    
-    }   
-    
-}
-
-function ciclaGiu(){
-
-    console.log(currentImage);
     imageGroup[currentImage].classList.remove('show');
     thumbnailGroup[currentImage].classList.remove('selected')
     overlayGroup[currentImage].classList.remove('noOverlay');
-    // currentImage = thumbnailGroup.length - 1;
-    
-    currentImage--;
+
+    if(currentImage > 0){
+        currentImage--;  
+    } else if(currentImage == 0){
+        currentImage = imageGroup.length - 1;
+    }
 
     imageGroup[currentImage].classList.add('show');
     thumbnailGroup[currentImage].classList.add('selected')
     overlayGroup[currentImage].classList.add('noOverlay');
-
-    next.classList.remove('hide');
-        
-    if(currentImage == 0){
-        clearInterval(interval);
-        setTimeout(function(){
-
-        imageGroup[currentImage].classList.remove('show');
-        thumbnailGroup[currentImage].classList.remove('selected')
-        overlayGroup[currentImage].classList.remove('noOverlay');
-
-        currentImage = imageGroup.length - 1;
-
-        imageGroup[currentImage].classList.add('show');
-        thumbnailGroup[currentImage].classList.add('selected')
-        overlayGroup[currentImage].classList.add('noOverlay');
-        interval = setInterval(ciclaGiu, 2000);
-        }, 2000);
-    }
-
- }
-
-
-
-
-
-
-// thumbnailGroup[currentImage].addEventListener('click', function(){
-//     let prevImage = document.querySelector('.selected');
-//     prevImage.classList.remove('selected')
-//     this[currentImage].forEach(element => {
-//         element.classList.add('selected');
-//     });
-
-// })
-
+    
+}
 
