@@ -129,94 +129,66 @@ overlayGroup[currentImage].classList.add('noOverlay');
 const next = document.querySelector('.next');
 const prev = document.querySelector('.prev');
 
+for(let c = 0; c < thumbnailGroup.length; c++){
+
+    thumbnailGroup[c].addEventListener('click', function(){
+        imageGroup[c].classList.add('show');
+        thumbnailGroup[c].classList.add('selected');
+        overlayGroup[c].classList.add('noOverlay');
+    })
+
+}
+
 next.addEventListener('click',
     function(){
 
-        
-        
+        imageGroup[currentImage].classList.remove('show');
+        thumbnailGroup[currentImage].classList.remove('selected');
+        overlayGroup[currentImage].classList.remove('noOverlay');
+
         if(currentImage < imageGroup.length - 1){
-            imageGroup[currentImage].classList.remove('show');
-            thumbnailGroup[currentImage].classList.remove('selected');
-            overlayGroup[currentImage].classList.remove('noOverlay');
-            
-
             currentImage++;
-
-            imageGroup[currentImage].classList.add('show');
-            thumbnailGroup[currentImage].classList.add('selected')
-            overlayGroup[currentImage].classList.add('noOverlay');
-
-
-            
-            
-        }else if(currentImage == imageGroup.length - 1){
-            imageGroup[currentImage].classList.remove('show');
-            thumbnailGroup[currentImage].classList.remove('selected')
-            overlayGroup[currentImage].classList.remove('noOverlay');
-            
+        }else if(currentImage == imageGroup.length - 1){ 
             currentImage = 0;
-           
-            imageGroup[currentImage].classList.add('show');
+        }
+        imageGroup[currentImage].classList.add('show');
             thumbnailGroup[currentImage].classList.add('selected')
             overlayGroup[currentImage].classList.add('noOverlay');
-        }
-        
     });
-
-    let interval;   
-
-    if(currentImage == 0){
-        let flag = true;
-        if(flag){
-           interval = setInterval(cicla, 2000);
-        } 
-
-    }
-
-
 
 prev.addEventListener('click',
     function(){
+        imageGroup[currentImage].classList.remove('show');
+        thumbnailGroup[currentImage].classList.remove('selected')
+        overlayGroup[currentImage].classList.remove('noOverlay');
+
         if(currentImage > 0){
-            imageGroup[currentImage].classList.remove('show');
-            thumbnailGroup[currentImage].classList.remove('selected')
-            overlayGroup[currentImage].classList.remove('noOverlay');
-
-            currentImage--;
-            imageGroup[currentImage].classList.add('show');
-            thumbnailGroup[currentImage].classList.add('selected')
-            overlayGroup[currentImage].classList.add('noOverlay');
-
-            next.classList.remove('hide');
-            
+            currentImage--;  
         } else if(currentImage == 0){
-            imageGroup[currentImage].classList.remove('show');
-            thumbnailGroup[currentImage].classList.remove('selected')
-            overlayGroup[currentImage].classList.remove('noOverlay');
-
             currentImage = imageGroup.length - 1;
-
-            imageGroup[currentImage].classList.add('show');
-            thumbnailGroup[currentImage].classList.add('selected')
-            overlayGroup[currentImage].classList.add('noOverlay');
-
         }
+
+        imageGroup[currentImage].classList.add('show');
+        thumbnailGroup[currentImage].classList.add('selected')
+        overlayGroup[currentImage].classList.add('noOverlay');
 
     }
 );
 
 
-// thumbnailGroup[currentImage].addEventListener('click', function(){
-//     let prevImage = document.querySelector('.selected');
-//     prevImage.classList.remove('selected')
-//     this[currentImage].forEach(element => {
-//         element.classList.add('selected');
-//     });
+    //bonus2
 
-// })
+let interval;   
 
 
-function cicla(){
+    let flag = true;
+    if(flag){
+        interval = setInterval(ciclaSu, 2000);
+    } 
+
+
+
+function ciclaSu(){
 
     imageGroup[currentImage].classList.remove('show');
     thumbnailGroup[currentImage].classList.remove('selected');
@@ -230,8 +202,7 @@ function cicla(){
     overlayGroup[currentImage].classList.add('noOverlay');
 
     if(currentImage == imageGroup.length - 1){
-        const clear = clearInterval(interval);
-        console.log(clear);
+        clearInterval(interval);
         setTimeout(function(){
         imageGroup[currentImage].classList.remove('show');
         thumbnailGroup[currentImage].classList.remove('selected')
@@ -242,9 +213,60 @@ function cicla(){
         imageGroup[currentImage].classList.add('show');
         thumbnailGroup[currentImage].classList.add('selected')
         overlayGroup[currentImage].classList.add('noOverlay');
-        interval = setInterval(cicla, 2000);
+        interval = setInterval(ciclaSu, 2000);
         }, 2000);
     
     }   
     
 }
+
+function ciclaGiu(){
+
+    console.log(currentImage);
+    imageGroup[currentImage].classList.remove('show');
+    thumbnailGroup[currentImage].classList.remove('selected')
+    overlayGroup[currentImage].classList.remove('noOverlay');
+    // currentImage = thumbnailGroup.length - 1;
+    
+    currentImage--;
+
+    imageGroup[currentImage].classList.add('show');
+    thumbnailGroup[currentImage].classList.add('selected')
+    overlayGroup[currentImage].classList.add('noOverlay');
+
+    next.classList.remove('hide');
+        
+    if(currentImage == 0){
+        clearInterval(interval);
+        setTimeout(function(){
+
+        imageGroup[currentImage].classList.remove('show');
+        thumbnailGroup[currentImage].classList.remove('selected')
+        overlayGroup[currentImage].classList.remove('noOverlay');
+
+        currentImage = imageGroup.length - 1;
+
+        imageGroup[currentImage].classList.add('show');
+        thumbnailGroup[currentImage].classList.add('selected')
+        overlayGroup[currentImage].classList.add('noOverlay');
+        interval = setInterval(ciclaGiu, 2000);
+        }, 2000);
+    }
+
+ }
+
+
+
+
+
+
+// thumbnailGroup[currentImage].addEventListener('click', function(){
+//     let prevImage = document.querySelector('.selected');
+//     prevImage.classList.remove('selected')
+//     this[currentImage].forEach(element => {
+//         element.classList.add('selected');
+//     });
+
+// })
+
+
