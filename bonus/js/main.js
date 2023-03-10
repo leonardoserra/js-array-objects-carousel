@@ -159,14 +159,15 @@ let interval;
 
     //metti ! se vuoi spegnerlo per debuggarlo  
     let flag = true;
-    if(!flag){
-        interval = setInterval(ciclaSu, 2000);
+    if(flag){
+        interval = setInterval(nextSlide, 2000);
     } 
 
 
 //function
 
 function nextSlide(){
+
     imageGroup[currentImage].classList.remove('show');
     thumbnailGroup[currentImage].classList.remove('selected');
     overlayGroup[currentImage].classList.remove('noOverlay');
